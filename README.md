@@ -4,7 +4,13 @@ Usage:
 
     ./generate_points_opentsdb.sh
 
-You should have your OpenTSDB running on 'localhost:4242'
+It will put 100 points for 'sys.cpu.nice' metric with a step 60 seconds (from past till now).
+
+It is equivalent of running 100 times
+
+    curl -i -X POST -d '{"metric":"sys.cpu.nice", "timestamp":'$(date +%s)', "value":'$RANDOM', "tags": {"host":"localhost"}}' http://localhost:4242/api/put?details
+
+## You should have your OpenTSDB running on 'localhost:4242'
 
 On macOS it is easy to setup with
 
